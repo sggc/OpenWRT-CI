@@ -62,3 +62,12 @@ if [[ "${WRT_TARGET^^}" == *"QUALCOMMAX"* ]]; then
 		echo "qualcommax set up nowifi successfully!"
 	fi
 fi
+
+#airoha平台调整
+if [[ "${WRT_TARGET^^}" == *"AIROHA"* ]]; then
+	#调整网口顺序，将lan4改为WAN口
+	sed -i 's/ucidef_set_interface_lan "lan1 lan2 lan3 lan4"/ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" "lan4"/g' target/linux/airoha/an7581/base-files/etc/board.d/02_network
+	#修复nokia_xg-040g-md中断定义引发的启动问题
+	sed -i 's/interrupts.*//g' target/linux/airoha/dts/an7581-nokia_xg-040g-md-common.dtsi
+	echo "airoha platform has been adjusted!"
+fi

@@ -1,0 +1,9 @@
+# ===== 私有扩展配置（Settings.sh 自动追加进所有构建） =====
+
+# UA3F 校园网防检测：UA伪装、IPID伪装、防时钟偏移（TCP时间戳删除），
+# 自带中文 LuCI（Services -> UA3F）
+CONFIG_PACKAGE_ua3f=y
+# L3 重写（IPID/TCP时间戳）所需队列内核模块
+CONFIG_PACKAGE_kmod-nft-queue=y
+# 抓包排查工具（检测行为分析用）
+CONFIG_PACKAGE_tcpdump=y
