@@ -21,7 +21,9 @@ jobs:
         with:
           gh_token: ${{secrets.GITHUB_TOKEN}}
           delete_releases: true
-          releases_keep_latest: 0
+          #保留最新1个Release：新版编译失败时旧固件不丢失
+          releases_keep_latest: 1
           delete_tags: true
           delete_workflows: true
-          workflows_keep_day: 0
+          #保留最近7天的运行记录，便于排查
+          workflows_keep_day: 7
